@@ -1,0 +1,11 @@
+.SuggestionItem p{
+    font-weight: 100;
+}
+.SuggestionItem {
+    background: #eee;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 1px 0px 10px #eee;
+}

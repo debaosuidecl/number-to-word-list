@@ -1,0 +1,11 @@
+.PhonePredictor{
+    padding: 20px;
+}
+
+.PhonePredictor h1{
+    font-weight: 900;
+    font-size: 25px;
+    border-bottom: 1px solid blueviolet;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+}
