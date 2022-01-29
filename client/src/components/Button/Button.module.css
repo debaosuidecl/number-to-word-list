@@ -17,4 +17,5 @@
     box-shadow: none;
     background: #eee !important;
     color: grey !important;
+    cursor: not-allowed;
 }
