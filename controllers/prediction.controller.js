@@ -1,7 +1,6 @@
 const Prediction = require("../classes/prediction.class")
 
 const getPrediction = (req, res) => {
-
     try {
         const { sequence } = req.body;
 

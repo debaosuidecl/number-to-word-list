@@ -11,8 +11,9 @@ export const getSuggestions = (sequence = "") => {
         }))
 
         try {
-            const predictionObject = await requestModule("GET", "/prediction", { sequence })
-            dispatch(predictionActions.setSuggestions(predictionObject.data))
+            const { data } = await requestModule("POST", "/prediction", { sequence })
+            console.log(data)
+            dispatch(predictionActions.setSuggestions(data.data))
 
         } catch (error) {
             console.log(error);

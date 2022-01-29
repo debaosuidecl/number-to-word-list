@@ -7,11 +7,7 @@ const requestModule = async (method, url, data) => {
             method,
             url: "http://localhost:5000/api" + url,
             data: method.toLowerCase() === "post" ? data : undefined,
-            headers: requirestoken
-                ? {
-                    "x-auth-token": token,
-                }
-                : undefined,
+
         };
 
         axiosObject = JSON.parse(JSON.stringify(axiosObject));

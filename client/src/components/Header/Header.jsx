@@ -1,18 +1,17 @@
 import classes from "./Header.module.css"
-
+import { LinearProgress } from "@material-ui/core"
+import { Fragment } from "react"
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+    const uiLoading = useSelector(state => state.ui.loading)
     return (
-        <header className={classes.header}>
-            <h1>Word Predict</h1>
-            <nav>
-                <ul>
-                    <li>
-                        {/* <CartButton /> */}
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <Fragment>
+            <header className={classes.header}>
+                <h1>Word Predict</h1>
+            </header>
+            {uiLoading ?? <LinearProgress />}
+        </Fragment>
     )
 }
 
