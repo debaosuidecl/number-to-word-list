@@ -17,27 +17,28 @@ let TrieDataBase;
 const getPrediction = (req, res) => {
     try {
         const { sequence, filterForWords = true } = req.body;
-
         const prediction = new Prediction(sequence)
-
         const predictionResponseWithoutFilter = prediction.predict();
-
-
-
-
 
         if (predictionResponseWithoutFilter.error) {
             return res.status(400).json(predictionResponseWithoutFilter)
         }
 
-        if (filterForWords) {
-
+        if (filterForWords && TrieDataBase) {
+            console.log("filtering with trie")
+            const predictionWithFilter = TrieDataBase.filter(predictionResponseWithoutFilter.data)
+            return res.json({
+                error: false,
+                success: true,
+                message: "Filtered word list",
+                data: predictionWithFilter
+            })
         }
         res.json(predictionResponseWithoutFilter)
 
     } catch (error) {
         return res.status(500).send({
-            error: "true",
+            error: true,
             message: "An Error Occured"
         })
     }

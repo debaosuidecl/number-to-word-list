@@ -4,7 +4,7 @@ describe("Word List Tests", () => {
     let trieDatabaseOfWords = null;
     beforeAll(async () => {
         try {
-            //initialize database of  words for tests
+            //initialize database of  words before running tests tests
             trieDatabaseOfWords = await createWordsDatabase();
         } catch (error) {
             console.log(error)
@@ -28,4 +28,6 @@ describe("Word List Tests", () => {
 
         expect(trieLength).toBe(wordsArrayLength)
     })
+
+
 })
