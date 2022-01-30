@@ -1,0 +1,1 @@
+exports.delay = (ms) => new Promise((res, rej) => setTimeout(() => res("done"), ms))

@@ -30,7 +30,7 @@ const PhonePredictor = () => {
         setSequence(state => `${state}${number}`)
     }
     const keyDownHandler = (evt) => {
-        // Prevent symbols and letters from entering inputt on type
+        // Prevent symbols and letters from entering input on type
         return evt.key.match(/[a-z\+\-]/gi) && !evt.key.match(/arrow|back/gi) && evt.preventDefault()
     }
     const clearHandler = () => {
@@ -47,6 +47,7 @@ const PhonePredictor = () => {
                     onToggle={() => setIsUsingRealWordFilter(state => !state)}
                 />
                 <SuggestionList suggestionList={suggestionList} />
+
                 <Input
                     onKeyDown={keyDownHandler}
                     value={sequence}
