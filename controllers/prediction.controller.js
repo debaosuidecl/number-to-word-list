@@ -1,18 +1,39 @@
 const Prediction = require("../classes/prediction.class")
+const { createWordsDatabase } = require("../services/wordList.service");
+
+let TrieDataBase;
+(
+    async () => {
+        try {
+            TrieDataBase = await createWordsDatabase()
+
+        } catch (error) {
+            console.log(error)
+            process.exit(1)
+        }
+    }
+)()
 
 const getPrediction = (req, res) => {
     try {
-        const { sequence } = req.body;
+        const { sequence, filterForWords = true } = req.body;
 
         const prediction = new Prediction(sequence)
 
-        const predictionResponse = prediction.predict();
+        const predictionResponseWithoutFilter = prediction.predict();
 
-        if (predictionResponse.error) {
-            return res.status(400).json(predictionResponse)
+
+
+
+
+        if (predictionResponseWithoutFilter.error) {
+            return res.status(400).json(predictionResponseWithoutFilter)
         }
 
-        res.json(predictionResponse)
+        if (filterForWords) {
+
+        }
+        res.json(predictionResponseWithoutFilter)
 
     } catch (error) {
         return res.status(500).send({

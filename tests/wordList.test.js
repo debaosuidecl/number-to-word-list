@@ -1,7 +1,7 @@
-const { createWordsDatabase } = require("../services/wordList.service");
-
+const { createWordsDatabase, buildWordsArray } = require("../services/wordList.service");
+const Trie = require("../classes/trieWords.class")
 describe("Word List Tests", () => {
-    let trieDatabaseOfWords;
+    let trieDatabaseOfWords = null;
     beforeAll(async () => {
         try {
             //initialize database of  words for tests
@@ -13,9 +13,19 @@ describe("Word List Tests", () => {
 
 
 
+    it("Trie Database has been initialized", () => {
+        expect(trieDatabaseOfWords).toBeInstanceOf(Trie)
+        expect(trieDatabaseOfWords).not.toBeNull()
+    })
 
-    it("Should load the  word list properly", () => {
-        // console.log(words, 'len')
-        expect(1 + 1).toBe(2)
+
+    it("array of words length should be equal to  the size of the trie", async () => {
+        const wordsArrayLength = (await buildWordsArray()).length
+        let trieLength = 0;
+        if (trieDatabaseOfWords) {
+            trieLength = trieDatabaseOfWords.size()
+        }
+
+        expect(trieLength).toBe(wordsArrayLength)
     })
 })

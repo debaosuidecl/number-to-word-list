@@ -17,7 +17,12 @@ class Prediction {
 
     /*   
         @description: Returns List of Possible Words using convertNumericSequenceToLetterEquivalent and recursiveLetterMatching methods
-        @returns   String[][] | false
+        @returns   {
+            error:  Boolean
+            message: String
+            data: String[]
+            success: Boolean
+        }
     */
     predict() {
         let letterMatrix = this.convertNumericSequenceToLetterEquivalent(this.sequence)
