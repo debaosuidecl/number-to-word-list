@@ -25,12 +25,14 @@ class Prediction {
             return {
                 error: true,
                 message: "Could not find search keys",
-                data: []
+                data: [],
+                success: false,
             }
         }
         const words = this.recursiveLetterMatching(letterMatrix).sort()
         return {
             success: true,
+            error: false,
             data: words,
             message: "Success"
         }

@@ -1,0 +1,29 @@
+.PhoneButton{
+    margin: 10px;
+}
+
+.PhoneButton p{
+    padding: 10px 5px;
+    border-radius: 20px;
+    background: #eee;
+    cursor: pointer;
+    background: white;
+    color: blueviolet;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+
+
+}
+.PhoneButton p:hover{
+    transition: .3s;
+    background-color: blueviolet ;
+    color: white;
+}
+
+.PhoneButton span{
+    font-weight: 300;
+    font-size: 14px;
+}
