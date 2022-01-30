@@ -6,7 +6,7 @@ let TrieDataBase;
     async () => {
         try {
             TrieDataBase = await createWordsDatabase()
-
+            console.log('loaded trie database')
         } catch (error) {
             console.log(error)
             process.exit(1)

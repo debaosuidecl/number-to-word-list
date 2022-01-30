@@ -53,5 +53,18 @@ class Trie {
     };
 
 
+    filter(listOfWords = []) {
+        let realWords = [];
+        for (let i = 0; i < listOfWords.length; i++) {
+            const word = listOfWords[i]
+            if (this.isWord(word)) {
+                realWords.push(word)
+            }
+        }
+
+        return realWords
+    }
+
+
 }
 module.exports = Trie;
