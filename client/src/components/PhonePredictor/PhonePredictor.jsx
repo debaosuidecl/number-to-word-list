@@ -8,11 +8,14 @@ import Button from '../Button/Button';
 import SuggestionList from '../SuggestionList/SuggestionList';
 import { getSuggestions } from "../../store/actionCreators/prediction";
 import PhoneButtonList from "../PhoneButtonList/PhoneButtonList";
+import SuggestionHeader from "../SuggestionHeader/SuggestionHeader";
+import Toggler from "../Toggler/Toggler";
 
 const PhonePredictor = () => {
 
     // Local State
     const [sequence, setSequence] = useState("")
+    const [isUsingRealWordFilter, setIsUsingRealWordFilter] = useState(false)
 
 
     // Bring in redux state
@@ -28,18 +31,17 @@ const PhonePredictor = () => {
     const selectNumberHandler = (number) => {
         setSequence(state => `${state}${number}`)
     }
+    const keyDownHandler = (evt) => {
+        return evt.key.match(/[a-z\+\-]/gi) && !evt.key.match(/arrow|back/gi) && evt.preventDefault()
+    }
     return (
         <Card>
             <div className={classes.PhonePredictor}>
-                <h1>Suggestion List</h1>
+                <SuggestionHeader />
+                <Toggler title="Real World Filter" isActive={isUsingRealWordFilter} onToggle={() => setIsUsingRealWordFilter(state => !state)} />
                 <SuggestionList suggestionList={suggestionList} />
                 <Input
-                    onKeyDown={(evt) => {
-
-                        evt.key.match(/[a-z\+\-]/gi) && !evt.key.match(/arrow|back/gi) && evt.preventDefault()
-                    }
-
-                    }
+                    onKeyDown={keyDownHandler}
                     value={sequence}
                     onChange={(e) => setSequence(e.target.value)}
                     placeholder="Enter Number Sequence"
