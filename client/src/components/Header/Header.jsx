@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <Fragment>
             <header className={classes.header}>
-                <h1>Word Predict</h1>
+                <h1>iPredict</h1>
             </header>
             {uiLoading ?? <LinearProgress />}
         </Fragment>

@@ -2,7 +2,7 @@ import { predictionActions } from "../slices/prediction"
 import { uiActions } from "../slices/ui"
 import requestModule from "../../utils/requestModule"
 
-export const getSuggestions = (sequence = "") => {
+export const getSuggestions = (options) => {
     return async (dispatch) => {
         dispatch(uiActions.setLoading(true))
         dispatch(uiActions.setError({
@@ -11,7 +11,7 @@ export const getSuggestions = (sequence = "") => {
         }))
 
         try {
-            const { data } = await requestModule("POST", "/prediction", { sequence })
+            const { data } = await requestModule("POST", "/prediction", options)
             console.log(data)
             dispatch(predictionActions.setSuggestions(data.data))
 

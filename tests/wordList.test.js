@@ -33,7 +33,7 @@ describe("Word List Tests", () => {
 
     it("Should filter an array of none words to form an array of real words", () => {
         const prediction = new Prediction("5683")
-        expect(trieDatabaseOfWords.filter(prediction.predict().data)).toEqual(["jove", "lote", "loud", "love"])
+        expect(trieDatabaseOfWords.filter(prediction.predict().data)).toEqual(["loud", "love"])
     })
 
 })
