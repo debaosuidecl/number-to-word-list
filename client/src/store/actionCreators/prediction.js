@@ -12,11 +12,11 @@ export const getSuggestions = (options) => {
 
         try {
             const { data } = await requestModule("POST", "/prediction", options)
-            console.log(data)
+            // console.log(data)
             dispatch(predictionActions.setSuggestions(data.data))
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
             const errorObject = error?.response?.data
             if (errorObject?.error) {

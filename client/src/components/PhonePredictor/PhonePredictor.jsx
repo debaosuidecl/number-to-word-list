@@ -45,6 +45,8 @@ const PhonePredictor = () => {
                     title={isUsingRealWordFilter ? "Filtering for real words" : "Not filtering for real words"}
                     isActive={isUsingRealWordFilter}
                     onToggle={() => setIsUsingRealWordFilter(state => !state)}
+
+                    tooltipContent="Click here to toggle the 'real words' filter"
                 />
                 <SuggestionList suggestionList={suggestionList} />
 
