@@ -11,7 +11,7 @@ router.post("/", [
     body("sequence")
         .exists()
         .isString()
-        .matches(/[1-9]/gi),
+    ,
     body("filterForWords").isBoolean()
 ], getPrediction)
 
