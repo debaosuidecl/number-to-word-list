@@ -1,6 +1,6 @@
 const Prediction = require("../classes/prediction.class")
 const { createWordsDatabase } = require("../services/wordList.service");
-
+const { validationResult } = require("express-validator")
 let TrieDataBase;
 (
     async () => {
@@ -16,7 +16,11 @@ let TrieDataBase;
 
 const getPrediction = (req, res) => {
     try {
-        const { sequence, filterForWords = true } = req.body;
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const { sequence = "", filterForWords = true } = req.body;
         const prediction = new Prediction(sequence)
         const predictionResponseWithoutFilter = prediction.predict();
 

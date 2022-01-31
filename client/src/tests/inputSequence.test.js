@@ -34,8 +34,4 @@ describe("Tests for sequence input field", () => {
     }
     )
 
-
-
-
-
 })
